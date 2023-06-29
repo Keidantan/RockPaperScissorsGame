@@ -4,19 +4,18 @@ by Keith Tan, 06/28/2023
 */
 
 #include <iostream>
-#include <iomanip>
+#include <iomanip> // setw() and setfill()
 #include <ctime> // to seed
-#include <conio.h>
+#include <conio.h> // getch();
 
 using namespace std;
 
 //Function prototypes
-void showStart();
-void displayChoices(int& input); //Welcome user and then we will display their choices
-bool checkError(int input);
-void getComputerChoice(int& a);
-void checkWhoWins(int a, int b, int& wins);
-bool playAgain();
+void displayChoices(int& input); //Welcome user, intake and output choice
+bool checkError(int input); //Check if user input is valid
+void getComputerChoice(int& a); //Uses RNG to get computer choice
+void checkWhoWins(int a, int b, int& wins); //Compares the user and computer input
+bool playAgain(); //Asks if user wants to play again
  
 
 int main() { //start of main
@@ -26,7 +25,6 @@ int main() { //start of main
     int wins = 0;
 
     do {
-        showStart();
         displayChoices(userInput);
         getComputerChoice(computerChoice);
         checkWhoWins(userInput,computerChoice, wins);
@@ -37,15 +35,13 @@ int main() { //start of main
 
 
 //Set Functions here
-void showStart() {
+void displayChoices(int& input) {
+
     cout << endl;
     cout << left << setw(5) << setfill('-') << "";
     cout << "Rock Paper Scissors Game!";
     cout << left << setw(5) << setfill('-') << "" << endl;
-}
 
-void displayChoices(int& input) {
-    
     do {
         cout << "Choose between 1.Rock, 2.Paper, 3.Scissors: ";
         cin >> input;
